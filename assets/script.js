@@ -20,7 +20,7 @@ function startQuiz() {
     startScreenEl.setAttribute("class", "hide");
     // make questions visible
     questionsEl.removeAttribute("class");
-    
+
 
     //start countdown
     timer = setInterval(countdown, 1000);
@@ -33,7 +33,8 @@ function startQuiz() {
 
 function askQuestion() {
     var currentQuestion = questions[questionIndex];
-
+    optionsEl.innerHTML = ""
+    imageEl.innerHTML = ""
 
 
     // Get question
@@ -46,36 +47,55 @@ function askQuestion() {
     img.setAttribute("src", picture);
     imageEl.appendChild(img);
 
-// Reset the options element 
+    // Reset the options element 
 
 
 
     // Choices Loop -- needed help with this one
-    currentQuestion.options.forEach(function (choice, i) {
-            // create new button for each choice
+    currentQuestion.options.forEach(function (choice) {
+        // create new button for each choice
         var choiceNode = document.createElement("button");
         choiceNode.setAttribute("class", "choice");
         choiceNode.setAttribute("value", choice);
 
         choiceNode.textContent = choice;
 
-            // attach click event listener to each choice
+        // attach click event listener to each choice
         choiceNode.onclick = questionClick;
 
-            // display on the page
+        // display on the page
         optionsEl.appendChild(choiceNode);
     });
 }
 function questionClick() {
-// Check answer
-    if (this.value !== questions[questionIndex].answer) {
-        time -= 5;
-// Lose time if the question is wrong
-        if (time < 0) {
-            time = 0;
-        }
+    // Check answer
+    if (this.value === questions[questionIndex].answer) {
+        time += 5;
+        timeEl.textContent = time;
+        questionIndex++ ;
+        
+    }else{
+        time -=5;
         timeEl.textContent = time;
     }
+        
+   
+        
+      
+       
+
+        if (questionIndex === questions.length) {
+            quizEnd();
+        } else {
+            askQuestion();
+        }
+
+    }
+
+
+
+function endQuiz() {
+
 }
 
 
@@ -84,6 +104,7 @@ function questionClick() {
 function countdown() {
     time--;
     timeEl.textContent = time;
+
 
 
 }
