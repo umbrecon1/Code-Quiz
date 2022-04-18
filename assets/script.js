@@ -72,29 +72,38 @@ function questionClick() {
     if (this.value === questions[questionIndex].answer) {
         time += 5;
         timeEl.textContent = time;
-        questionIndex++ ;
-        
-    }else{
-        time -=5;
+        questionIndex++;
+
+    } else {
+        time -= 5;
         timeEl.textContent = time;
-    }
-        
-   
-        
-      
-       
 
-        if (questionIndex === questions.length) {
-            quizEnd();
-        } else {
-            askQuestion();
+        if (time < 0) {
+            time = 0;
         }
-
     }
+
+
+
+
+
+
+    if (questionIndex === questions.length) {
+        quizEnd();
+    } else {
+        askQuestion();
+    }
+
+}
 
 
 
 function endQuiz() {
+    clearInterval(timer);
+
+    var endscreenEl = document.getElementById("end");
+    endscreenEl.removeAttribute('class');
+
 
 }
 
