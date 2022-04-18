@@ -33,5 +33,5 @@ var questions = [
         options: ["Darling in the Franxx", "No Game No Life", "Tokyo Ghoul", "Fairy Tail"],
         answer: "No Game No Life",
         image: "./assets/images/jibril.png"
-    },
+    }
 ];
