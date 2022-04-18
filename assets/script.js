@@ -6,7 +6,7 @@ var timeEl = document.getElementById("time");
 var startBtn = document.getElementById("start");
 var submitBtn = document.getElementById("submit");
 var intitialsEl = document.getElementById("initials");
-var choicesEl = document.getElementById("choices");
+var optionsEl = document.getElementById("options");
 var imageEl = document.getElementById("image");
 
 var questionIndex = 0;
@@ -20,6 +20,7 @@ function startQuiz() {
     startScreenEl.setAttribute("class", "hide");
     // make questions visible
     questionsEl.removeAttribute("class");
+    
 
     //start countdown
     timer = setInterval(countdown, 1000);
@@ -45,26 +46,36 @@ function askQuestion() {
     img.setAttribute("src", picture);
     imageEl.appendChild(img);
 
-// Reset the options element
-    optionsEl.innerHTML = "";    
+// Reset the options element 
 
 
 
     // Choices Loop -- needed help with this one
-    currentQuestion.choices.forEach(function (choice, i) {
+    currentQuestion.options.forEach(function (choice, i) {
             // create new button for each choice
-            var choiceNode = document.createElement("button");
-            choiceNode.setAttribute("class", "choice");
-            choiceNode.setAttribute("value", choice);
+        var choiceNode = document.createElement("button");
+        choiceNode.setAttribute("class", "choice");
+        choiceNode.setAttribute("value", choice);
 
-            choiceNode.textContent = i + 1 + ". " + choice;
+        choiceNode.textContent = choice;
 
             // attach click event listener to each choice
-            choiceNode.onclick = questionClick;
+        choiceNode.onclick = questionClick;
 
             // display on the page
-            choicesEl.appendChild(choiceNode);
-        });
+        optionsEl.appendChild(choiceNode);
+    });
+}
+function questionClick() {
+// Check answer
+    if (this.value !== questions[questionIndex].answer) {
+        time -= 5;
+// Lose time if the question is wrong
+        if (time < 0) {
+            time = 0;
+        }
+        timeEl.textContent = time;
+    }
 }
 
 
