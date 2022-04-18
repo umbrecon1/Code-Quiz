@@ -10,9 +10,14 @@
 }
 
 body {
+    display: flex;
+    padding: 0;
+    margin: 0;
     background-color: black;
     color: white;
     text-align: center;
+    width: 100vw;
+    height: 100vh;
 }
 
 body p {
@@ -47,13 +52,30 @@ button:hover {
 }
 
 .container {
+    
     display: flex;
     justify-content: center;
-    align-items: center;
+    max-width: 600px;
     margin: 100px auto 0 auto;
-    max-width: 50%; 
+    
+}
+
+.questions {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+    color: white;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    
 }
 
 .hide {
     display: none;
+}
+
+img {
+    max-width: 200px;
 }

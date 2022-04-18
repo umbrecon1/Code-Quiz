@@ -7,6 +7,7 @@ var startBtn = document.getElementById("start");
 var submitBtn = document.getElementById("submit");
 var intitialsEl = document.getElementById("initials");
 var choicesEl = document.getElementById("choices");
+var imageEl = document.getElementById("image");
 
 var questionIndex = 0;
 var time = 90;
@@ -21,8 +22,30 @@ function startQuiz() {
     questionsEl.removeAttribute("class");
 
     //start countdown
-    timer = setInterval()
+    timer = setInterval(countdown, 1000);
 
+    timer.textContent = time;
+// Invoke the questions
+    askQuestion();
+    
+}
+
+function askQuestion() {
+    var currentQuestion = questions[questionIndex]
+    
+
+
+// Get question
+    var titleEl = document.getElementById("question-ask");
+    titleEl.textContent = currentQuestion.title;
+    choicesEl.innerHTML = "";
+
+//Display image
+
+    var picture = currentQuestion.image;
+    var img = document.createElement("img");
+    img.setAttribute("src", picture);
+    imageEl.append(img);
 }
 
 // Timer
@@ -39,6 +62,10 @@ function countdown() {
 
 
 // Saving results
+
+
+// Buttons
+startBtn.onclick = startQuiz;
 
 
 
