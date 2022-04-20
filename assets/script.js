@@ -138,7 +138,7 @@ function countdown() {
 // Saving results
 function saveHighscore() {
     
-    var initials = initialsEl.value.trim();
+    var initials = intitialsEl.value.trim();
   
     if (initials !== "") {
     

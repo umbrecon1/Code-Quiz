@@ -23,6 +23,25 @@ body p {
     padding: 5px
 }
 
+.container {
+    color: white;
+    width: 800px;
+    max-width: 80%;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+ol {
+    padding-left: 0px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+li {
+    padding: 5px;
+    text-align: center;
+}
+
 .time {
     position: absolute;
     top: 10px;
@@ -64,7 +83,7 @@ button:hover {
     margin-top: 20px;
     padding-top: 10px;
     color: greenyellow;
-    
+
 }
 
 .feedbackWrong {
