@@ -74,19 +74,28 @@ function questionClick() {
     if (this.value === questions[questionIndex].answer) {
         time += 5;
         timeEl.textContent = time;
-        questionIndex++;
+        
         feedbackEl.textContent = ("Correct!");
-
-    // If incorrect
+        feedbackEl.setAttribute("class", "feedbackCorrect");
+        setTimeout(function() {
+            feedbackEl.setAttribute("class", "feedback hide");
+          }, 500);
+        questionIndex++;
+        // If incorrect
     } else {
         time -= 5;
         timeEl.textContent = time;
-        feedbackEl = ("Wrong!");
+        feedbackEl.textContent = ("Wrong!");
+        feedbackEl.setAttribute("class", "feedbackWrong");
 
-        if (time < 0) {
+
+
+        if (time <= 0) {
             time = 0;
+            endQuiz();
         }
     }
+    
 
 
 

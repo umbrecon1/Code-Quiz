@@ -5,7 +5,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    
+
     font-family: 'Montserrat', sans-serif;
     color: white;
 }
@@ -30,6 +30,7 @@ body p {
     border: solid 2px hotpink;
     padding: 5px;
 }
+
 a {
     text-decoration: none;
     color: black;
@@ -57,13 +58,22 @@ button:hover {
     display: block;
 }
 
-.feedback {
+.feedbackCorrect {
     font-style: italic;
-    font-size: 150%;
+    font-size: 120%;
     margin-top: 20px;
     padding-top: 10px;
     color: greenyellow;
-    border: 2px solid hotpink;
+    
+}
+
+.feedbackWrong {
+    font-style: italic;
+    font-size: 120%;
+    margin-top: 20px;
+    padding-top: 10px;
+    color: red;
+
 }
 
 
