@@ -57,6 +57,14 @@ button:hover {
     display: block;
 }
 
+.feedback {
+    font-style: italic;
+    font-size: 150%;
+    margin-top: 20px;
+    padding-top: 10px;
+    color: greenyellow;
+    border: 2px solid hotpink;
+}
 
 
 
@@ -75,4 +83,8 @@ button:hover {
 
 img {
     max-width: 200px;
+}
+
+input {
+    color: black;
 }

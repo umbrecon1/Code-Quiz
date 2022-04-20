@@ -8,6 +8,7 @@ var submitBtn = document.getElementById("submit");
 var intitialsEl = document.getElementById("initials");
 var optionsEl = document.getElementById("options");
 var imageEl = document.getElementById("image");
+var feedbackEl = document.getElementById("feedback");
 
 var questionIndex = 0;
 var time = 30;
@@ -69,14 +70,18 @@ function askQuestion() {
 }
 function questionClick() {
     // Check answer
+    //If Correct
     if (this.value === questions[questionIndex].answer) {
         time += 5;
         timeEl.textContent = time;
         questionIndex++;
+        feedbackEl.textContent = ("Correct!");
 
+    // If incorrect
     } else {
         time -= 5;
         timeEl.textContent = time;
+        feedbackEl = ("Wrong!");
 
         if (time < 0) {
             time = 0;
@@ -89,7 +94,7 @@ function questionClick() {
 
 
     if (questionIndex === questions.length) {
-        quizEnd();
+        endQuiz();
     } else {
         askQuestion();
     }
@@ -102,7 +107,12 @@ function endQuiz() {
     clearInterval(timer);
 
     var endscreenEl = document.getElementById("end");
-    endscreenEl.removeAttribute('class');
+    endscreenEl.removeAttribute("class");
+
+    var finalScoreEl = document.getElementById("final-score");
+    finalScoreEl.textContent = time;
+
+    questionsEl.setAttribute("class", "hide");
 
 
 }
@@ -113,6 +123,9 @@ function endQuiz() {
 function countdown() {
     time--;
     timeEl.textContent = time;
+    if (time <= 0) {
+        quizEnd()
+    }
 
 
 
